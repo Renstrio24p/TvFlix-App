@@ -11,7 +11,6 @@ export const fetchMoviesByGenre = async (genre: string, page: number = 1) => {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     const data = await response.json();
-    console.log("Fetched Movies:", data.results); // Debugging output
     return { movieList: data.results, totalPages: data.total_pages };
   } catch (error) {
     console.error("Error fetching movies by genre:", error);
