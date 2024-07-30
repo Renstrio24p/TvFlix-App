@@ -55,14 +55,14 @@ export default function Navbar(DOM: HTMLElement) {
     "[search-toggler]"
   ) as NodeListOf<HTMLButtonElement>;
 
+  const nav = DOM.querySelector(".navbar") as HTMLElement;
+  runAnchor(nav);
+
   searchToggler.forEach(button => {
     button.addEventListener("click", () => {
       searchBox.classList.toggle("active");
     });
   });
-
-  const anchor = DOM.querySelector(".navbar") as HTMLElement;
-  runAnchor(anchor);
 
   return ui;
 }

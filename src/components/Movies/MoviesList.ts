@@ -1,6 +1,7 @@
 "use strict";
 
 import { useTSPurifier } from "../../utils/hooks/useTSPurifier";
+import { runAnchor } from "../func/anchors";
 import { api_key, fetchDataFromServer } from "../func/api";
 import { createMovieCard } from "./func/createMovieCard";
 
@@ -78,6 +79,7 @@ export const moviesList = async (DOM: HTMLElement) => {
       for (const movie of movieList) {
         const movieCard = createMovieCard(movie);
         movieListElem.querySelector(".grid-list")!.appendChild(movieCard);
+        runAnchor(movieListElem);
       }
 
       // Load more button functionality
