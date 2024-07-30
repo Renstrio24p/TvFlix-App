@@ -1,4 +1,3 @@
-import { runAnchor } from "../../components/func/anchors";
 import { moviesList } from "../../components/Movies/MoviesList";
 import { useTSComponent } from "../../utils/hooks/useTSComponent";
 import { useTSElements } from "../../utils/hooks/useTSElements";
@@ -28,9 +27,6 @@ export default function Movies(DOM: HTMLElement, websiteName: string) {
         `,
     configMovies
   );
-
-  const a = DOM.querySelectorAll("a") as NodeListOf<HTMLAnchorElement>;
-  runAnchor(a);
 
   useTSComponent("movies-list", DOM, moviesList);
 

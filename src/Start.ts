@@ -1,4 +1,3 @@
-// Import utilities and components
 import { useTSCSP } from "./utils/hooks/useTSCSP";
 import { Router } from "./components/Router/router";
 import { useTSComponent } from "./utils/hooks/useTSComponent";
@@ -6,7 +5,6 @@ import { useTSElements } from "./utils/hooks/useTSElements";
 import Navbar from "./components/Navbar/Navbar";
 import { useTSAddBg } from "./utils/hooks/useTSAddBg";
 import { config } from "./config/Start.config";
-import { runAnchor } from "./components/func/anchors";
 import Sidebar from "./components/Sidebar/Sidebar";
 import { searchFunction } from "./components/func/Global";
 import { searchModal } from "./components/SearchModal/SearchModal";
@@ -84,12 +82,8 @@ export default function Start(
     }
   );
 
-  // Handle anchor elements
-  runAnchor(DOM.querySelectorAll("a") as NodeListOf<HTMLAnchorElement>);
-
   // Handle Toggle Menu to Sidebar
   searchFunction();
-
   sidebarfetch();
 
   return ui;

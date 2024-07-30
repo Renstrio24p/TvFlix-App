@@ -29,6 +29,5 @@ export const createMovieCard = (movie: any): HTMLElement => {
     </div>
     <a href="/details?id=${id}" class="card-btn" title="${title}"></a>
   `;
-
   return movieCard;
 };

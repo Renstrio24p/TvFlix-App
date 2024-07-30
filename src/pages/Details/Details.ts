@@ -1,6 +1,5 @@
 import { details } from "../../components/Details/DetailHome";
 import { detailsList } from "../../components/Details/DetailList";
-import { runAnchor } from "../../components/func/anchors";
 import { useTSComponent } from "../../utils/hooks/useTSComponent";
 import { useTSElements } from "../../utils/hooks/useTSElements";
 import { useTSMetaData } from "../../utils/hooks/useTSMetaData";
@@ -33,9 +32,6 @@ export default function Details(DOM: HTMLElement, websiteName: string) {
         `,
     configDetails
   );
-
-  const a = DOM.querySelectorAll("a") as NodeListOf<HTMLAnchorElement>;
-  runAnchor(a);
 
   useTSComponent("movie-details", DOM, details);
   useTSComponent("details-list", DOM, detailsList);

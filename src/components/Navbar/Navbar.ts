@@ -8,7 +8,7 @@ export default function Navbar(DOM: HTMLElement) {
     DOM,
     /*html*/ `
         <div class='navbar'>
-            <a href="/" class="logo">
+            <a href="/" class="logo" id='logo'>
                 <img src="/logo.webp" width="140" height="32" alt="Tvflix home">
             </a>
             <div class="search-box" search-box>
@@ -46,11 +46,6 @@ export default function Navbar(DOM: HTMLElement) {
     `,
     configNavbar
   );
-
-  // Initialize anchors, menu toggle, and search box toggle
-  const a = DOM.querySelectorAll("a") as NodeListOf<HTMLAnchorElement>;
-  runAnchor(a);
-
   // Initialize search functionality
   search(DOM);
 
@@ -65,6 +60,9 @@ export default function Navbar(DOM: HTMLElement) {
       searchBox.classList.toggle("active");
     });
   });
+
+  const anchor = DOM.querySelector(".navbar") as HTMLElement;
+  runAnchor(anchor);
 
   return ui;
 }

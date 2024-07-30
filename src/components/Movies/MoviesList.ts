@@ -1,37 +1,55 @@
+"use strict";
+
 import { useTSPurifier } from "../../utils/hooks/useTSPurifier";
 import { api_key, fetchDataFromServer } from "../func/api";
 import { createMovieCard } from "./func/createMovieCard";
 
-// Function to initialize the movies list with optional genre filtering
+// Function to initialize the movies list with optional genre and language filtering
 export const moviesList = async (DOM: HTMLElement) => {
   const params = new URLSearchParams(window.location.search);
   const genreId = params.get("genre");
   const searchQuery = params.get("search");
+  const language = params.get("language") || "en"; // Default language is English
 
   let genreName = "Movies"; // Default genre name
+  let languageName = "Movies"; // Default language name
 
+  // Fetch genre name if genreId is present
   if (genreId) {
     const genreList = await fetchGenreList();
     genreName = genreList[Number(genreId)] || "Movies";
   }
 
+  // Set the language name based on the language code
+  const languageNames: { [key: string]: string } = {
+    en: "English",
+    tl: "Tagalog",
+    hi: "Hindi",
+    zh: "Chinese",
+    ja: "Japanese",
+    ko: "Korean",
+  };
+
+  languageName = languageNames[language] || "Movies";
+
   const genreUrlParam = genreId ? `&with_genres=${genreId}` : "";
   const searchUrlParam = searchQuery
     ? `&query=${encodeURIComponent(searchQuery)}`
     : "";
+  const languageUrlParam = `&with_original_language=${language}`;
 
   let currentPage = 1;
   let totalPages = 0;
 
   const fetchMovies = (page: number) => {
-    const url = `https://api.themoviedb.org/3/discover/movie?api_key=${api_key}&sort_by=popularity.desc&include_adult=false&page=${page}${genreUrlParam}${searchUrlParam}`;
+    const url = `https://api.themoviedb.org/3/discover/movie?api_key=${api_key}&sort_by=popularity.desc&include_adult=false&page=${page}${genreUrlParam}${searchUrlParam}${languageUrlParam}`;
 
     fetchDataFromServer(url, ({ results: movieList, total_pages }) => {
       if (totalPages === 0) {
         totalPages = total_pages;
       }
 
-      document.title = `${genreName} Movies - Tvflix`;
+      document.title = `${genreName} - ${languageName} Movies - Tvflix`;
 
       let movieListElem = DOM.querySelector(
         ".movie-list.genre-list"
@@ -44,7 +62,7 @@ export const moviesList = async (DOM: HTMLElement) => {
         movieListElem.innerHTML = String(
           useTSPurifier(`
           <div class="title-wrapper">
-            <h1 class="heading">All ${genreName} Movies</h1>
+            <h1 class="heading">All ${languageName} ${genreName}</h1>
           </div>
           <div class="grid-list"></div>
           <div class='load'>

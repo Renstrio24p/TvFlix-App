@@ -1,5 +1,4 @@
 import { useTSMetaData } from "../../utils/hooks/useTSMetaData";
-import { useAnchor } from "../../utils/hooks/useTSAnchor";
 import { useTSElements } from "../../utils/hooks/useTSElements";
 import "./tailwind.css";
 
@@ -31,9 +30,6 @@ export default function NotFound(
     </div>
     `
   ) as string;
-
-  const returnBtn = DOM.querySelector(".return") as HTMLAnchorElement;
-  useAnchor(returnBtn, returnBtn.href, "return home");
 
   return ui;
 }

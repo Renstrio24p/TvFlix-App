@@ -41,7 +41,6 @@ export const details = async (DOM: HTMLElement) => {
 
   try {
     const movieData: MovieData = await fetchMovieDetails(movieId);
-    console.log("Movie Data:", movieData);
 
     // Use the reusable functions
     const trailers = getTrailers(movieData.videos);

@@ -1,6 +1,8 @@
+import { useTSEventAll } from "../../../utils/hooks/useTSAllElements";
 import { api_key } from "../../func/api";
 import { createMovieCard } from "./createMovieCard";
 
+// Function to fetch movies by genre with optional page number
 export const fetchMoviesByGenre = async (genre: string, page: number = 1) => {
   try {
     const urlParam = `with_genres=${genre}`;
@@ -18,13 +20,14 @@ export const fetchMoviesByGenre = async (genre: string, page: number = 1) => {
   }
 };
 
+// Function to get and display the movie list
 export const getMovieList = async (query: string) => {
   const container = document.querySelector("[page-content]") as HTMLElement;
 
   // Fetch movies based on the query
   const { movieList, totalPages } = await fetchMoviesByGenre(query);
 
-  // Update the movie list with the fetched data
+  // Create and configure movie list section
   const movieListElem = document.createElement("section");
   movieListElem.classList.add("movie-list", "genre-list");
   movieListElem.setAttribute("aria-label", `${query} Movies`);
@@ -37,11 +40,11 @@ export const getMovieList = async (query: string) => {
     <button class="btn load-more" load-more>Load More</button>
   `;
 
-  // Add movie cards based on fetched items
-  for (const movie of movieList) {
+  // Add movie cards to the list
+  movieList.forEach((movie: any) => {
     const movieCard = createMovieCard(movie);
     movieListElem.querySelector(".grid-list")!.appendChild(movieCard);
-  }
+  });
 
   container.appendChild(movieListElem);
 
@@ -49,26 +52,30 @@ export const getMovieList = async (query: string) => {
   const loadMoreBtn = movieListElem.querySelector(
     "[load-more]"
   ) as HTMLButtonElement;
+
   let currentPage = 1;
-  loadMoreBtn.addEventListener("click", async function () {
+
+  const handleLoadMoreClick = async () => {
     if (currentPage >= totalPages) {
-      this.style.display = "none"; // Hide the button if no more pages
+      loadMoreBtn.style.display = "none"; // Hide the button if no more pages
       return;
     }
 
     currentPage++;
-    this.classList.add("loading");
+    loadMoreBtn.classList.add("loading");
 
     const { movieList: additionalMovies } = await fetchMoviesByGenre(
       query,
       currentPage
     );
 
-    this.classList.remove("loading");
+    loadMoreBtn.classList.remove("loading");
 
-    for (const movie of additionalMovies) {
+    additionalMovies.forEach((movie: any) => {
       const movieCard = createMovieCard(movie);
       movieListElem.querySelector(".grid-list")!.appendChild(movieCard);
-    }
-  });
+    });
+  };
+
+  useTSEventAll("[load-more]", "click", handleLoadMoreClick);
 };

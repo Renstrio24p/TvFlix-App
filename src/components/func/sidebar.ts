@@ -1,9 +1,9 @@
 "use strict";
 
 import { useTSEventAll } from "../../utils/hooks/useTSAllElements.ts";
-import { useAnchor } from "../../utils/hooks/useTSAnchor.ts";
 import { useTSPurifier } from "../../utils/hooks/useTSPurifier.ts";
 import { getMovieList } from "../Movies/func/getMovieByGenre.ts";
+import { runAnchor } from "./anchors.ts";
 import { api_key, fetchDataFromServer } from "./api.ts";
 import { toggleSidebar } from "./toggleSidebar.ts";
 
@@ -15,6 +15,16 @@ type Genre = {
 type GenreList = {
   [id: number]: string;
 };
+
+// Language options data
+const languages = [
+  { code: "en", name: "English" },
+  { code: "tl", name: "Tagalog" },
+  { code: "hi", name: "Hindi" },
+  { code: "zh", name: "Chinese" },
+  { code: "ja", name: "Japanese" },
+  { code: "ko", name: "Korean" },
+];
 
 export const sidebarfetch = () => {
   const genreList: GenreList = {};
@@ -35,22 +45,21 @@ export const sidebarfetch = () => {
 
   sidebarInner.innerHTML = String(
     useTSPurifier(/*html*/ `
-    <div class="sidebar-list">
+    <div class="sidebar-list genre">
       <p class="title">Genre</p>
       <!-- Placeholder for dynamic genre links -->
     </div>
-    <div class="sidebar-list">
+    <div class="sidebar-list lang">
       <p class="title">Language</p>
-      <a href="/movielist?language=english" class="sidebar-link">English</a>
-      <a href="/movielist?language=tagalog" class="sidebar-link">Tagalog</a>
-      <a href="/movielist?language=hindi" class="sidebar-link">Hindi</a>
-      <a href="/movielist?language=chinese" class="sidebar-link">Chinese</a>
-      <a href="/movielist?language=korean" class="sidebar-link">Korean</a>
+      <!-- Placeholder for dynamic language links -->
     </div>
   `)
   );
 
   function genreLink() {
+    const genreListElem = sidebarInner.querySelector(
+      ".sidebar-list.genre"
+    ) as HTMLElement;
     for (const [genreId, genreName] of Object.entries(genreList)) {
       const link = document.createElement("a");
       link.classList.add("sidebar-link");
@@ -58,17 +67,34 @@ export const sidebarfetch = () => {
       link.id = `genre-${genreId}`; // Update ID to be unique
       link.textContent = genreName;
 
-      useAnchor(link);
+      genreListElem.appendChild(link);
 
-      sidebarInner.querySelector(".sidebar-list")!.appendChild(link);
-
-      useTSEventAll(
-        `genre-${genreId}`,
-        "click",
-        () => getMovieList(`with_genres=${genreId}`) // Use genre ID in API query
+      useTSEventAll(`genre-${genreId}`, "click", () =>
+        getMovieList(`with_genres=${genreId}`)
       );
+
+      genreListElem.appendChild(link);
+      runAnchor(genreListElem);
     }
   }
+
+  function languageLink() {
+    const languageListElem = sidebarInner.querySelector(
+      ".sidebar-list.lang"
+    ) as HTMLElement;
+    languages.forEach(({ code, name }) => {
+      const link = document.createElement("a");
+      link.classList.add("sidebar-link");
+      link.setAttribute("href", `/movielist?language=${code}`); // Use language code in URL
+      link.textContent = name;
+
+      languageListElem.appendChild(link);
+      runAnchor(languageListElem);
+    });
+  }
+
+  // Call languageLink function to add language links
+  languageLink();
 
   const sidebar = document.querySelector(".sidebar") as HTMLElement;
   toggleSidebar(sidebar);

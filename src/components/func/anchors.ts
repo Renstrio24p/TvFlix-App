@@ -1,5 +1,11 @@
 import { useAnchor } from "../../utils/hooks/useTSAnchor";
 
-export const runAnchor = (anchors: NodeListOf<HTMLAnchorElement>) => {
-  anchors.forEach(anchor => useAnchor(anchor, anchor.href));
+export const runAnchor = (DOM: HTMLElement, selector: string = "a") => {
+  const elements = DOM.querySelectorAll(
+    selector
+  ) as NodeListOf<HTMLAnchorElement>;
+
+  if (elements.length > 0) {
+    useAnchor(elements);
+  }
 };

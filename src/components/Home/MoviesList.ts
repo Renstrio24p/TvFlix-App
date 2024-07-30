@@ -1,5 +1,4 @@
 import { useTSElements } from "../../utils/hooks/useTSElements";
-import { runAnchor } from "../func/anchors";
 
 type Movie = {
   backdrop_path: string;
@@ -61,9 +60,6 @@ export const movieList = (DOM: HTMLElement, movies: Movie[]) => {
       </div>
     `
   );
-
-  const anchor = DOM.querySelectorAll("a") as NodeListOf<HTMLAnchorElement>;
-  runAnchor(anchor);
 
   return ui;
 };

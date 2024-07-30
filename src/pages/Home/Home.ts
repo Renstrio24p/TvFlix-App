@@ -1,4 +1,3 @@
-import { runAnchor } from "../../components/func/anchors";
 import { api_key, fetchDataFromServer } from "../../components/func/api";
 import { bannerSlider } from "../../components/Home/BannerSlider";
 import { movieList } from "../../components/Home/MoviesList";
@@ -48,10 +47,6 @@ export default function Home(DOM: HTMLElement, websiteName: string) {
     `,
     configHomePage
   );
-
-  // Initialize anchor links
-  const a = DOM.querySelectorAll("a") as NodeListOf<HTMLAnchorElement>;
-  runAnchor(a);
 
   // Fetch movie data
   fetchDataFromServer(

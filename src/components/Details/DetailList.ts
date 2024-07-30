@@ -1,5 +1,5 @@
+import { useAnchor } from "../../utils/hooks/useTSAnchor";
 import { useTSElements } from "../../utils/hooks/useTSElements";
-import { runAnchor } from "../func/anchors";
 import { api_key } from "../func/api";
 
 const BASE_URL = "https://api.themoviedb.org/3/movie";
@@ -110,7 +110,7 @@ export const detailsList = async (DOM: HTMLElement) => {
     );
 
     const anchor = DOM.querySelectorAll("a") as NodeListOf<HTMLAnchorElement>;
-    runAnchor(anchor);
+    useAnchor(anchor);
 
     return ui;
   } catch (error) {
