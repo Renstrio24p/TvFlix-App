@@ -1,5 +1,5 @@
+import { useAnchorSingle } from "../../utils/hooks/useTSAnchorSingle";
 import { useTSElements } from "../../utils/hooks/useTSElements";
-import { runAnchor } from "../func/anchors";
 import { search } from "../func/Search";
 import { configNavbar } from "./settings/Navbar.config";
 
@@ -55,8 +55,8 @@ export default function Navbar(DOM: HTMLElement) {
     "[search-toggler]"
   ) as NodeListOf<HTMLButtonElement>;
 
-  const nav = DOM.querySelector(".navbar") as HTMLElement;
-  runAnchor(nav);
+  const nav = DOM.querySelector("a") as HTMLAnchorElement;
+  useAnchorSingle(nav, nav.href, "logo link");
 
   searchToggler.forEach(button => {
     button.addEventListener("click", () => {
