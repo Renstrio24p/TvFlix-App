@@ -1,3 +1,11 @@
-# start of file
-user-agent: *
-disallow: /downloads/
+# Allow all crawlers full access, except where explicitly disallowed below
+User-agent: *
+Disallow: /admin/
+Disallow: /private/
+Disallow: /temp/
+Disallow: /*.pdf$
+Disallow: /*.zip$
+
+# Allow only Googlebot to access /public-content/
+User-agent: Googlebot
+Allow: /public-content/
