@@ -33,12 +33,12 @@ export default function Home(DOM: HTMLElement, websiteName: string) {
     /*html*/ `
       <article class="w-full">
         <section 
-          class="banner lg:h-[90em] max-h-[60em]" 
+          class="banner h-[60em] max-h-[90em]" 
           aria-label='popular movies'
           id='banner-slider'
         ></section>
         <section
-          class='movie-list'
+          class='movie-list px-4'
           aria-label='upcoming movies'
           id='movies-list'
         >
