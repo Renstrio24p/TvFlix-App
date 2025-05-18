@@ -22,8 +22,8 @@ export const movieList = (DOM: HTMLElement, movies: Movie[]) => {
         <div class="slider-list">
           <div class="slider-inner">
             ${movies
-              .map(
-                movie => `
+      .map(
+        movie => `
               <div class="movie-card">
                 <figure class="poster-box card-banner">
                   <img 
@@ -45,16 +45,15 @@ export const movieList = (DOM: HTMLElement, movies: Movie[]) => {
                     <span class="span">${movie.vote_average}</span>
                   </div>
                   <div class="card-badge">${new Date(
-                    movie.release_date
-                  ).getFullYear()}</div>
+          movie.release_date
+        ).getFullYear()}</div>
                 </div>
-                <a href="/details?id=${movie.id}" class="card-btn" title='${
-                  movie.title
-                }'></a>
+                <a href="/details?id=${movie.id}" class="card-btn" title='${movie.title
+          }'></a>
               </div>
             `
-              )
-              .join("")}
+      )
+      .join("")}
           </div>
         </div>
       </div>

@@ -501,7 +501,7 @@ body {
     top: 96px;
     bottom: 0;
     left: -340px;
-    max-width: 340px;
+    max-width: 500px;
     width: 100%;
     border-block-start: 1px solid var(--banner-background);
     overflow-y: overlay;
@@ -617,7 +617,6 @@ body {
 
 .banner {
     position: relative;
-    height: 700px;
     border-radius: var(--radius-24);
     overflow: hidden;
 }
@@ -628,6 +627,7 @@ body {
     left: 120%;
     width: 100%;
     height: 100%;
+    padding: 10px 0 0;
     opacity: 0;
     visibility: hidden;
     transition: opacity var(--transition-long);
@@ -686,7 +686,6 @@ body {
 .slider-control {
     position: absolute;
     bottom: 20px;
-    left: 20px;
     right: 0;
     border-radius: var(--radius-16) 0 0 var(--radius-16);
     user-select: none;
@@ -769,7 +768,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 600px;
+    height: 100%;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -786,6 +785,9 @@ body {
 .movie-detail .movie-poster {
     max-width: 300px;
     width: 100%;
+    height: auto;
+    border-radius: var(--radius-16);
+    margin-block-end: 24px;
 }
 
 .movie-detail .heading {

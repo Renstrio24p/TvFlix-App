@@ -28,7 +28,7 @@ const securityHeadersPlugin = (): Plugin => ({
         );
 
         // Set CORS headers
-        res.setHeader("Access-Control-Allow-Origin", "https://movie-app-mtdb.vercel.app, https://api.themoviedb.org, https://image.tmdb.org");
+        res.setHeader("Access-Control-Allow-Origin", "*");
         res.setHeader(
           "Access-Control-Allow-Methods",
           "GET, POST, PUT, DELETE, OPTIONS"

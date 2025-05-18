@@ -19,9 +19,10 @@ export default function Details(DOM: HTMLElement, websiteName: string) {
   const ui = useTSElements(
     DOM,
     /*html*/ `
-        <article class="container">
+        <article class="container p-4">
             <section 
                 aria-label='movies list'
+                class="p-16 h-fit"
                 id='movie-details'
             ></section>
             <section

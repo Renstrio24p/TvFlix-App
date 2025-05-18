@@ -17,9 +17,9 @@ export const bannerSlider = (DOM: HTMLElement, slides: SlideData[]) => {
   const slideElements = slides
     .map(
       (slide, index) => /*html*/ `
-        <div class="slider-item ${index === 0 ? "active" : ""}">
+        <div class="slider-item mx-20 h-[60em] ${index === 0 ? "active" : ""}">
           <img src="${slide.imgSrc}" alt="${slide.altText
-        }" class="object-cover w-full h-auto" loading='lazy'>
+        }" class="object-cover w-full h-full" loading='lazy'>
           <div class="banner-content">
             <h2 class="heading">${slide.title}</h2>
             <div class="meta-list">
@@ -61,10 +61,10 @@ export const bannerSlider = (DOM: HTMLElement, slides: SlideData[]) => {
   const ui = useTSElements(
     DOM,
     /*html*/ `
-      <div class="banner-slider">
+      <div class="banner-slider  lg:h-[60em] max-h-[60em]">
         ${slideElements}
       </div>
-      <div class="slider-control">
+      <div class="slider-control left-1/2">
         <div class="control-inner">
           ${controlElements}
         </div>

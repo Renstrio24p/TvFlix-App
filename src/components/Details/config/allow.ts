@@ -19,6 +19,8 @@ export const configDetailsHome = {
     "frameborder",
     "title",
     "sandbox",
+    "style",
+    "background",
   ],
   ALLOW_UNSAFE_SCRIPT: false,
   ALLOW_ARIA_ATTR: true,

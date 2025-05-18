@@ -17,7 +17,7 @@ export const fetchApi = (DOM: HTMLElement) => {
     `https://api.themoviedb.org/3/movie/popular?api_key=${api_key}&page=1`,
     ({ results: movieList }: { results: Movie[] }) => {
       const slides = movieList.map(movie => ({
-        imgSrc: `https://image.tmdb.org/t/p/w500${movie.backdrop_path}`,
+        imgSrc: `https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`,
         altText: movie.title,
         title: movie.title,
         year: new Date(movie.release_date).getFullYear().toString(),
@@ -25,7 +25,7 @@ export const fetchApi = (DOM: HTMLElement) => {
         genres: movie.genre_ids.map(id => getGenreName(id)),
         description: movie.overview,
         detailsUrl: `/details?id=${movie.id}`,
-        controlImgSrc: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
+        controlImgSrc: `https://image.tmdb.org/t/p/w1280${movie.poster_path}`,
       }));
 
       // Initialize the banner slider with the fetched slides data

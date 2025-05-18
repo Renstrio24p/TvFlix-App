@@ -31,9 +31,9 @@ export default function Home(DOM: HTMLElement, websiteName: string) {
   const ui = useTSElements(
     DOM,
     /*html*/ `
-      <article class="container">
+      <article class="w-full">
         <section 
-          class="banner" 
+          class="banner lg:h-[90em] max-h-[60em]" 
           aria-label='popular movies'
           id='banner-slider'
         ></section>

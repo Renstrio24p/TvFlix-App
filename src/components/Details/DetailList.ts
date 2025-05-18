@@ -1,6 +1,5 @@
 import { useAnchor } from "../../utils/hooks/useTSAnchor";
 import { useTSElements } from "../../utils/hooks/useTSElements";
-import { api_key } from "../func/api";
 
 const BASE_URL = "https://api.themoviedb.org/3/movie";
 
@@ -11,6 +10,8 @@ const IMAGE_SIZES = {
   large: "w780",
   original: "original",
 };
+
+const api = import.meta.env.VITE_API_MTDB;
 
 interface Movie {
   id: number;
@@ -23,7 +24,7 @@ interface Movie {
 const fetchRelatedMovies = async (movieId: string): Promise<Movie[]> => {
   try {
     const response = await fetch(
-      `${BASE_URL}/${movieId}/recommendations?api_key=${api_key}`
+      `${BASE_URL}/${movieId}/recommendations?api_key=${api}`
     );
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
@@ -96,7 +97,7 @@ export const detailsList = async (DOM: HTMLElement) => {
     const ui = useTSElements(
       DOM,
       /*html*/ `
-        <div class="movie-list">
+        <div class="movie-list max-w-screen-3xl mx-auto px-4 md:px-8 lg:px-16">
           <div class="title-wrapper">
             <h3 class="title-large">You May Also Like</h3>
           </div>
