@@ -1,0 +1,21 @@
+export const configHomePage = {
+  ALLOWED_ATTR: [
+    "src",
+    "width",
+    "height",
+    "loading",
+    "referrerpolicy",
+    "class",
+    "id",
+    "placeholder",
+    "href",
+    "alt",
+    "loading",
+    "draggable",
+    "slider-item",
+    "aria-label",
+    "aria-hidden",
+  ],
+  BLOCKED_ATTR: ["onerror"],
+  ALLOW_UNSAFE_SCRIPT: false,
+};
