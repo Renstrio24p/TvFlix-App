@@ -56,7 +56,7 @@ export default function Start(
       <div class='flex'>
          <aside id='sidebar'></aside>
          <div class="overlay" overlay menu-toggler></div>
-         <article class='overflow-x-hidden' id="router"></article>
+         <article class='overflow-x-hidden w-full' id="router"></article>
       </div>
       <main id='search-modal'></main>
       <footer class='px-[20px] md:px-[80px]' id="footer"></footer>
