@@ -1,20 +1,11 @@
-# Allow all web crawlers full access
-User-agent: *
-Disallow:
-
-# Disallow all crawlers from accessing the admin panel
+# Allow all crawlers full access, except where explicitly disallowed below
 User-agent: *
 Disallow: /admin/
-
-# Block specific directories from being crawled
 Disallow: /private/
 Disallow: /temp/
-
-# Block certain file types
 Disallow: /*.pdf$
 Disallow: /*.zip$
 
-# Allow only certain crawlers to access specific sections
+# Allow only Googlebot to access /public-content/
 User-agent: Googlebot
 Allow: /public-content/
-
