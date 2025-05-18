@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "packageManager": "pnpm@10.10.0",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
-  "packageManager": "pnpm@10.10.0",
+  "author": "Waren",
   "dependencies": {
     "@babel/core": "^7.27.1",
     "@babel/generator": "^7.27.1",
