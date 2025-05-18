@@ -23,6 +23,9 @@ importers:
       '@babel/types':
         specifier: ^7.27.1
         version: 7.27.1
+      TvFlix-App:
+        specifier: 'file:'
+        version: tvflix-app@file:(@types/node@22.15.18)(jiti@1.21.7)(yaml@2.8.0)
       animate.css:
         specifier: ^4.1.1
         version: 4.1.1
@@ -41,9 +44,12 @@ importers:
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@22.15.18)(typescript@5.8.3)
-      tvflix-movie-app:
+      tvflix-app:
         specifier: 'file:'
         version: file:(@types/node@22.15.18)(jiti@1.21.7)(yaml@2.8.0)
+      tvflix-movie-app:
+        specifier: 'file:'
+        version: tvflix-app@file:(@types/node@22.15.18)(jiti@1.21.7)(yaml@2.8.0)
       typeface-dm-sans:
         specifier: ^1.1.13
         version: 1.1.13
@@ -1098,7 +1104,7 @@ packages:
       '@swc/wasm':
         optional: true
 
-  'tvflix-movie-app@file:':
+  'tvflix-app@file:':
     resolution: {directory: '', type: directory}
 
   typeface-dm-sans@1.1.13:
@@ -2194,7 +2200,7 @@ snapshots:
       v8-compile-cache-lib: 3.0.1
       yn: 3.1.1
 
-  tvflix-movie-app@file:(@types/node@22.15.18)(jiti@1.21.7)(yaml@2.8.0):
+  tvflix-app@file:(@types/node@22.15.18)(jiti@1.21.7)(yaml@2.8.0):
     dependencies:
       '@babel/core': 7.27.1
       '@babel/generator': 7.27.1
