@@ -17,7 +17,7 @@ export const bannerSlider = (DOM: HTMLElement, slides: SlideData[]) => {
   const slideElements = slides
     .map(
       (slide, index) => /*html*/ `
-        <div class="slider-item mx-20 h-[60em] ${index === 0 ? "active" : ""}">
+        <div class="slider-item mx-20 h-[120em] ${index === 0 ? "active" : ""}">
           <img src="${slide.imgSrc}" alt="${slide.altText
         }" class="object-cover w-full h-full" loading='lazy'>
           <div class="banner-content">
