@@ -16,6 +16,7 @@ const IMAGE_SIZES = {
   small: "w342",
   medium: "w500",
   large: "w780",
+  hd: "w1280",
   original: "original",
 };
 
@@ -26,7 +27,7 @@ const getImageUrl = (path: string | null, size: string): string => {
   }
 
   const sizeKey =
-    (IMAGE_SIZES as { [key: string]: string })[size] || IMAGE_SIZES.medium;
+    (IMAGE_SIZES as { [key: string]: string })[size] || IMAGE_SIZES.hd;
   return `https://image.tmdb.org/t/p/${sizeKey}${path}`;
 };
 
@@ -57,9 +58,9 @@ export const details = async (DOM: HTMLElement) => {
           <div 
             class="backdrop-image"
             style='background-image:url("${getImageUrl(
-              movieData.backdrop_path,
-              "original"
-            )}")'
+        movieData.backdrop_path,
+        "original"
+      )}")'
           ></div>
           <figure class='poster-box movie-poster' width='120'>
             <img 
@@ -83,9 +84,8 @@ export const details = async (DOM: HTMLElement) => {
                 </div>
                 <div class="separator"></div>
                 <div class="meta-item">${releaseYear}</div>
-                <div class="meta-item card-badge">${
-                  movieData.adult ? "PG-13" : "R"
-                }</div>
+                <div class="meta-item card-badge">${movieData.adult ? "PG-13" : "R"
+      }</div>
               </div>
               <p class="genre">${genres}</p>
               <p class="overview">${movieData.overview}</p>

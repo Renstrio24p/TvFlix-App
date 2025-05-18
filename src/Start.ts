@@ -27,7 +27,7 @@ export default function Start(
     `'self' 'nonce-rAnd0m123'`,
     `'none'`,
     `'self' https://fonts.googleapis.com https://fonts.gstatic.com`,
-    `'self' https://blogger.googleusercontent.com https://image.tmdb.org https://googleads.g.doubleclick.net'`,
+    `'self' https://blogger.googleusercontent.com https://image.tmdb.org https://googleads.g.doubleclick.net','https://image.tmdb.org'`,
     [
       `'self'`,
       `https://fonts.googleapis.com`,

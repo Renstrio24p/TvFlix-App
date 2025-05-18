@@ -97,8 +97,8 @@ export const useTSMetaData = (
       cspConfig.scriptSrc,
       cspConfig.styleSrc,
       cspConfig.objectSrc,
-      cspConfig.connectSrc,
-      cspConfig.reportOnly
+      Array.isArray(cspConfig.connectSrc) ? cspConfig.connectSrc.join(" ") : cspConfig.connectSrc,
+      cspConfig.reportOnly !== undefined ? String(cspConfig.reportOnly) : undefined
     );
   }
 

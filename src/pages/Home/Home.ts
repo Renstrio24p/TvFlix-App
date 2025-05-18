@@ -53,7 +53,7 @@ export default function Home(DOM: HTMLElement, websiteName: string) {
     `https://api.themoviedb.org/3/movie/popular?api_key=${api_key}&page=1`,
     ({ results: movieList }: { results: Movie[] }) => {
       const slides = movieList.map(movie => ({
-        imgSrc: `https://image.tmdb.org/t/p/w500${movie.backdrop_path}`,
+        imgSrc: `https://image.tmdb.org/t/p/w1920${movie.backdrop_path}`,
         altText: movie.title,
         title: movie.title,
         year: new Date(movie.release_date).getFullYear().toString(),

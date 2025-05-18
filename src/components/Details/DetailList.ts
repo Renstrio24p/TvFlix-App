@@ -61,7 +61,7 @@ export const detailsList = async (DOM: HTMLElement) => {
     const movieCardsHtml = relatedMovies
       .map(movie => {
         const releaseYear = new Date(movie.release_date).getFullYear();
-        const posterUrl = getPosterUrl(movie.poster_path, "w342"); // Set desired size here
+        const posterUrl = getPosterUrl(movie.poster_path, "w1280"); // Set desired size here
 
         return /*html*/ `
         <div class="movie-card">

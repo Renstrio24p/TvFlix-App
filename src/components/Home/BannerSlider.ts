@@ -13,13 +13,13 @@ type SlideData = {
 };
 
 export const bannerSlider = (DOM: HTMLElement, slides: SlideData[]) => {
+
   const slideElements = slides
     .map(
       (slide, index) => /*html*/ `
         <div class="slider-item ${index === 0 ? "active" : ""}">
-          <img src="${slide.imgSrc}" alt="${
-        slide.altText
-      }" class="img-cover" loading='eager'>
+          <img src="${slide.imgSrc}" alt="${slide.altText
+        }" class="object-cover w-full h-auto" loading='lazy'>
           <div class="banner-content">
             <h2 class="heading">${slide.title}</h2>
             <div class="meta-list">
@@ -46,8 +46,7 @@ export const bannerSlider = (DOM: HTMLElement, slides: SlideData[]) => {
   const controlElements = slides
     .map(
       (slide, index) => /*html*/ `
-        <button class="poster-box slider-item btn-slide ${
-          index === 0 ? "active" : ""
+        <button class="poster-box slider-item btn-slide ${index === 0 ? "active" : ""
         }" data-slide="${index}">
           <img 
             src="${slide.controlImgSrc}" 
