@@ -8,7 +8,7 @@ export default function Sidebar(DOM: HTMLElement) {
   const ui = useTSElements(
     DOM,
     /*html*/ `
-        <div class="sidebar sticky left-0 bottom-0" sidebar>
+        <div class="sidebar lg:sticky" sidebar>
             <div class="sidebar-inner"></div>
             <div id='sidebar-footer'></div>
         </div>

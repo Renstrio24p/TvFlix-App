@@ -54,7 +54,7 @@ export const details = async (DOM: HTMLElement) => {
     const ui = useTSElements(
       DOM,
       /*html*/ `
-        <div class='movie-detail'>
+        <div class='movie-detail px-4'>
           <div 
             class="backdrop-image"
             style='background-image:url("${getImageUrl(
@@ -62,7 +62,7 @@ export const details = async (DOM: HTMLElement) => {
         "original"
       )}")'
           ></div>
-          <figure class='poster-box movie-poster' width='120'>
+          <figure class='poster-box movie-poster mx-auto lg:mx-0' width='120'>
             <img 
               src="${getImageUrl(movieData.poster_path, "w500")}" 
               alt="${movieData.title}" 

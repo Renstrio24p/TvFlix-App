@@ -22,7 +22,7 @@ export default function Details(DOM: HTMLElement, websiteName: string) {
         <article class="container p-4">
             <section 
                 aria-label='movies list'
-                class="p-16 h-fit"
+                class="lg:p-16 h-fit"
                 id='movie-details'
             ></section>
             <section
